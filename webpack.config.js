@@ -1,12 +1,18 @@
 var path = require('path')
 var webpack = require('webpack')
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'vue-sk-input.min.js',
+    library: 'SkInput',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
