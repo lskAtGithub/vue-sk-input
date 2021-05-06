@@ -13,8 +13,8 @@
   <div id="app">
     <template>
       <h1>Vue SkInput</h1>
-      <div class='container'>
-        <sk-input />
+      <div class='container' style="width: 180px;">
+        <sk-input v-model="test" placeholder="placeholder" minlength="10" />
       </div>
     </template>
   </div>
@@ -23,8 +23,13 @@
       name: 'test',
       data() {
         return {
-
+          test: ''
         }
+      },
+      methods: {
+        handleInput(event){
+          console.log(event)
+        },
       }
     };
     var Ctor = Vue.extend(Main)
