@@ -14,7 +14,12 @@
     <template>
       <h1>Vue SkInput</h1>
       <div class='container' style="width: 180px;">
-        <sk-input v-model="test" placeholder="placeholder" minlength="10" />
+        <span>name: </span>
+        <sk-input v-model="test" placeholder="placeholder" verify-type='phone' @blur="handleBlur" clearable />
+      </div>
+      <div class='container' style="width: 180px;">
+        <span>age: </span>
+        <sk-input v-model="test" placeholder="placeholder" size="large" verify-type='phone' @blur="handleBlur" />
       </div>
     </template>
   </div>
@@ -27,8 +32,7 @@
         }
       },
       methods: {
-        handleInput(event){
-          console.log(event)
+        handleBlur(event){
         },
       }
     };
