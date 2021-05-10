@@ -1,18 +1,35 @@
 # vue-sk-input
 
-> A Vue.js project
+## 使用
 
-## Build Setup
+> npm install sk-input
 
-``` bash
-# install dependencies
-npm install
+##示例
+```
+<sk-input v-model="test" placeholder="placeholder" :validate="validate: { reg: /^1$/, errorMsg: 'error' }" clearable />
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+import skInput from 'vue-sk-input'
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+##### Input Attributes
+|  参数   | 说明  |  类型   | 可选值  | 默认值  |
+|  ----  | ----  | ----  | ----  | ----  |
+| value / v-model | 绑定值 | string / number | —— | —— |
+| maxlength | 原生属性，最大输入长度 | number | —— | —— |
+| minlength | 原生属性，最小输入长度 | number | —— | —— |
+| placeholder | 输入框占位文本 | string | —— | —— |
+| clearable | 是否可清空 | boolean | —— | false |
+| disabled | 禁用 | boolean | —— | false |
+| readonly | 只读 | boolean | —— | false |
+| size | 输入框尺寸 | string | large / default / small / mini | default |
+| validate | 校验规则,示例： { reg: /[0-9]/, errorMsg: 'error' } | object | —— | —— |
+| verifyType | 内置的校验规则( 金额，值不为空，手机号，邮箱 ) | string | money / notNull / phone / email | —— |
+
+##### Input Events
+|  事件名   | 说明  |  回调参数  |
+|  ----  | ----  | ---- |
+| blur | 在 Input 失去焦点时触发 | (event: Event) |
+| focus | 在 Input 获得焦点时触发 | (event: Event) |
+| input | 在 Input 值改变时触发 | (event: Event) |
+| clear | 在点击由 clearable 属性生成的清空按钮时触发 | —— |
+

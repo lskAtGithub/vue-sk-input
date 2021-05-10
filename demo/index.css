@@ -183,3 +183,8 @@ input {
   color: #fff;
   border-color: #E65D6E;
 }
+
+.container{
+  display: flex;
+  align-items: center;
+}

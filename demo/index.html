@@ -13,13 +13,8 @@
   <div id="app">
     <template>
       <h1>Vue SkInput</h1>
-      <div class='container' style="width: 180px;">
-        <span>name: </span>
-        <sk-input v-model="test" placeholder="placeholder" verify-type='phone' @blur="handleBlur" clearable />
-      </div>
-      <div class='container' style="width: 180px;">
-        <span>age: </span>
-        <sk-input v-model="test" placeholder="placeholder" size="large" verify-type='phone' @blur="handleBlur" />
+      <div class='container'>
+        <div>name:</div><sk-input v-model="test" placeholder="placeholder" :validate="validate" @input="handleBlur" clearable />
       </div>
     </template>
   </div>
@@ -28,11 +23,13 @@
       name: 'test',
       data() {
         return {
-          test: ''
+          test: '',
+          validate: { reg: /^1$/, errorMsg: 'error' }
         }
       },
       methods: {
         handleBlur(event){
+          console.log(event)
         },
       }
     };

@@ -5,6 +5,7 @@
         ref="input"
         :name="name"
         :label="label"
+        :validate="validate"
         class="sk__input"
         :value="value"
         :readonly="readonly"
@@ -34,8 +35,8 @@ export default {
     value: [Number, String],
     label: [Number, String],
     name: [Number, String],
-    maxlength: [Number, String],
-    minlength: [Number, String],
+    maxlength: [Number],
+    minlength: [Number],
     placeholder: [Number, String],
     autocomplete: {
       type: String,
@@ -53,6 +54,14 @@ export default {
       type: Boolean,
       default: false
     },
+    validate: {
+      type: [Object, Boolean],
+      default: false,
+      validator: (value)=>{
+        if(value && !value.reg){ console.error('validate属性必须有reg=>校验规则'); return  false }
+        return true
+      },
+    },
     size: {
       type: String,
       validator: (value)=>{
@@ -66,9 +75,6 @@ export default {
         return ['money', 'notNull', 'phone', 'email'].indexOf(value) !== -1
       }
     }
-  },
-  created(){
-    console.log(this.size)
   },
   data(){
     return {
@@ -88,29 +94,42 @@ export default {
       this.$emit('focus', event)
     },
     handleBlur(event){
-      this.$emit('blur', event)
-      if(this.verifyType){
-        if(this.minlength && this.value < this.minlength){
-          this.verifyError = true
-          this.errorMsg = `最少输入${this.minlength}个字符`
+      const _this = this
+      _this.$emit('blur', event)
+      if(_this.verifyType || _this.validate && _this.validate.reg){
+        if(_this.minlength && _this.value < _this.minlength && !_this.validate){
+          _this.verifyError = true
+          _this.errorMsg = `最少输入${_this.minlength}个字符`
           return
         }
-        if(this.verifyType === 'money' && !(validMoney(this.value))){
-          this.verifyError = true
-          this.errorMsg = `输入的金额格式有误`
+        if(_this.verifyType === 'money' && !(validMoney(_this.value)) && !_this.validate){
+          _this.verifyError = true
+          _this.errorMsg = `输入的金额格式有误`
           return
         }
-        if(this.verifyType === 'phone' && !(validPhone(this.value))){
-          this.verifyError = true
-          this.errorMsg = `输入的手机号格式有误`
+        if(_this.verifyType === 'phone' && !(validPhone(_this.value)) && !_this.validate){
+          _this.verifyError = true
+          _this.errorMsg = `输入的手机号格式有误`
           return
         }
-        if(this.verifyType === 'email' && !(validEmail(this.value))){
-          this.verifyError = true
-          this.errorMsg = `输入的邮箱格式有误`
+        if(_this.verifyType === 'email' && !(validEmail(_this.value)) && !_this.validate){
+          _this.verifyError = true
+          _this.errorMsg = `输入的邮箱格式有误`
           return
         }
-        this.verifyError = false
+        if(_this.validate && _this.validate.reg){
+          if(_this.validate.reg && _this.validate.reg.test && typeof _this.validate.reg.test === 'function'){
+            if(!(_this.validate.reg.test(_this.value))){
+              _this.verifyError = true
+              _this.errorMsg = _this.validate.errorMsg || ''
+              return
+            }
+          }else{
+            console.error(`validate.reg 应为 reg 对象， 而不是 ${typeof _this.validate.reg}`)
+            return
+          }
+        }
+        _this.verifyError = false
       }
     }
   }
@@ -122,8 +141,8 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box!important;
-
-
+  position: relative;
+  display: inline-block;
 }
 .sk__input_box{
   width: 100%;
@@ -165,9 +184,10 @@ export default {
 .error__tips{
   overflow: hidden;
   color: red;
-  font-size: 12px;
-  transition: all 0.6s;
+  font-size: 13px;
+  transition: all 0.75s;
   max-height: 0;
+  position: absolute;
 }
 .error__tips.error__msg{
   max-height: 20px;
