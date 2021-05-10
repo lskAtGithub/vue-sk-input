@@ -2,7 +2,8 @@
 
 ## 使用
 
-> npm install sk-input
+
+> npm install vue-sk-input
 
 ##示例
 ```
