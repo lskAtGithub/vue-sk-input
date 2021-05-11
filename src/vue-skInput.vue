@@ -187,7 +187,6 @@ export default {
   font-size: 13px;
   transition: all 0.75s;
   max-height: 0;
-  position: absolute;
 }
 .error__tips.error__msg{
   max-height: 20px;
