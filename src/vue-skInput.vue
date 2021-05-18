@@ -145,7 +145,6 @@ export default {
   display: inline-block;
 }
 .sk__input_box{
-  width: 100%;
   display: flex;
   align-items: center;
   min-width: 180px;
@@ -169,7 +168,6 @@ export default {
 }
 .sk__input_box .sk__input{
   outline: none;
-  width: 100%;
   border: none;
   color: #606266;
   padding: 0;
