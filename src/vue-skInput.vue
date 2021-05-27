@@ -137,56 +137,63 @@ export default {
 </script>
 
 <style scoped>
+.sk__input__wrapper div,input{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box!important;
+}
 .sk__input__wrapper{
   margin: 0;
   padding: 0;
   box-sizing: border-box!important;
   position: relative;
   display: inline-block;
+  width: 180px;
 }
-.sk__input_box{
+.sk__input__wrapper .sk__input_box{
   display: flex;
   align-items: center;
-  min-width: 180px;
+  justify-content: space-between;
   border: 1px solid #dcdfe6;
   border-radius: 3px;
   font-size: 14px;
   padding: 3px 12px;
   margin: 0;
 }
-.sk__input_box.small__input{
+.sk__input__wrapper .sk__input_box.small__input{
   font-size: 13px;
   padding: 1px 12px;
 }
-.sk__input_box.large__input{
+.sk__input__wrapper .sk__input_box.large__input{
   font-size: 15px;
   padding: 5px 14px;
 }
-.sk__input_box.mini__input{
+.sk__input__wrapper .sk__input_box.mini__input{
   font-size: 12px;
   padding: 0 10px;
 }
-.sk__input_box .sk__input{
+.sk__input__wrapper .sk__input_box .sk__input{
   outline: none;
   border: none;
   color: #606266;
-  padding: 0;
+  padding: 4px 5px 4px 0;
   margin: 0;
+  width: 100%;
 }
-.sk__input_box.error__input{
+.sk__input__wrapper .sk__input_box.error__input{
   border-color: red;
 }
-.sk__input_box .sk__input::placeholder{
+.sk__input__wrapper .sk__input_box .sk__input::placeholder{
   color: #c0cfe3;
 }
-.error__tips{
+.sk__input__wrapper .error__tips{
   overflow: hidden;
   color: red;
   font-size: 13px;
   transition: all 0.75s;
   max-height: 0;
 }
-.error__tips.error__msg{
+.sk__input__wrapper .error__tips.error__msg{
   max-height: 20px;
 }
 </style>

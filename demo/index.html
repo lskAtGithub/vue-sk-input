@@ -14,10 +14,10 @@
     <template>
       <h1>Vue SkInput</h1>
       <div class='container'>
-        <div>name:</div><sk-input v-model="test" placeholder="placeholder" :validate="validate" @input="handleBlur" />
+        <div>name:</div><sk-input v-model="test" verifyType="phone" size="small" />
       </div>
       <div class='container'>
-        <div>name:</div><sk-input v-model="test" placeholder="placeholder" :validate="validate" @input="handleBlur" clearable />
+        <div>name:</div><sk-input v-model="test" verifyType="phone" size="mini" clearable />
       </div>
     </template>
   </div>
