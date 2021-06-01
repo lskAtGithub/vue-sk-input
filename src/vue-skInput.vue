@@ -160,31 +160,35 @@ export default {
   padding: 3px 12px;
   margin: 0;
 }
+.sk__input__wrapper .sk__input_box:hover{
+  border-color: #c0c4cc;
+}
 .sk__input__wrapper .sk__input_box.small__input{
-  font-size: 13px;
-  padding: 3px 10px;
+  height: 32px;
+  line-height: 32px;
 }
 .sk__input__wrapper .sk__input_box.large__input{
-  font-size: 15px;
-  padding: 7px 10px;
+  height: 40px;
+  line-height: 40px;
 }
 .sk__input__wrapper .sk__input_box.default__input{
-  font-size: 12px;
-  padding: 5px 10px;
+  height: 36px;
+  line-height: 36px;
 }
 .sk__input__wrapper .sk__input_box .sk__input{
   outline: none;
   border: none;
   color: #606266;
-  padding: 4px 10px;
+  padding: 0 10px 0 3px;
   margin: 0;
   width: 100%;
+  font-size: inherit;
 }
 .sk__input__wrapper .sk__input_box.error__input{
   border-color: red;
 }
 .sk__input__wrapper .sk__input_box .sk__input::placeholder{
-  color: #c0cfe3;
+  color: #c0c4cc;
 }
 .sk__input__wrapper .error__tips{
   overflow: hidden;
