@@ -14,10 +14,13 @@
     <template>
       <h1>Vue SkInput</h1>
       <div class='container'>
-        <div>name:</div><sk-input v-model="test" verifyType="phone" size="small" />
+        <sk-input v-model="test" verifyType="phone" size="large" />
       </div>
       <div class='container'>
-        <div>name:</div><sk-input v-model="test" verifyType="phone" size="mini" clearable />
+        <sk-input v-model="test" verifyType="phone" size="default" />
+      </div>
+      <div class='container'>
+        <sk-input v-model="test" verifyType="phone" size="small" />
       </div>
     </template>
   </div>

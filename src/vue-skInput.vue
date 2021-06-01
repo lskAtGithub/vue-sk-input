@@ -1,6 +1,6 @@
 <template>
   <div class="sk__input__wrapper">
-    <div class="sk__input_box" :class="{'error__input': verifyError, 'large__input': size === 'large', 'mini__input': size === 'mini', 'small__input': size === 'small'}">
+    <div class="sk__input_box" :class="{'error__input': verifyError, 'large__input': size === 'large', 'default__input': size === 'default', 'small__input': size === 'small'}">
       <input
         ref="input"
         :name="name"
@@ -65,7 +65,7 @@ export default {
     size: {
       type: String,
       validator: (value)=>{
-        return ['large', 'default', 'small', 'mini'].indexOf(value) !== -1
+        return ['large', 'default', 'small'].indexOf(value) !== -1
       },
       default: 'default'
     },
@@ -162,21 +162,21 @@ export default {
 }
 .sk__input__wrapper .sk__input_box.small__input{
   font-size: 13px;
-  padding: 1px 12px;
+  padding: 3px 10px;
 }
 .sk__input__wrapper .sk__input_box.large__input{
   font-size: 15px;
-  padding: 5px 14px;
+  padding: 7px 10px;
 }
-.sk__input__wrapper .sk__input_box.mini__input{
+.sk__input__wrapper .sk__input_box.default__input{
   font-size: 12px;
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 .sk__input__wrapper .sk__input_box .sk__input{
   outline: none;
   border: none;
   color: #606266;
-  padding: 4px 5px 4px 0;
+  padding: 4px 10px;
   margin: 0;
   width: 100%;
 }

@@ -22,7 +22,7 @@ import skInput from 'vue-sk-input'
 | clearable | 是否可清空 | boolean | —— | false |
 | disabled | 禁用 | boolean | —— | false |
 | readonly | 只读 | boolean | —— | false |
-| size | 输入框尺寸 | string | large / default / small / mini | default |
+| size | 输入框尺寸 | string | large / default / small  | default |
 | validate | 校验规则,示例： { reg: /[0-9]/, errorMsg: 'error' } | object | —— | —— |
 | verifyType | 内置的校验规则( 金额，值不为空，手机号，邮箱 ) | string | money / notNull / phone / email | —— |
 
